@@ -12,7 +12,8 @@ function init() {
 
   console.log("hello world");
 
-  ajaxRequest();
+  //ajaxRequest();
+  addNumber();
 
 
 
@@ -21,10 +22,16 @@ function init() {
 
 $(document).ready(init);
 
-function ajaxRequest() {
+function addNumber(){
+  var btn = $('#btn');
+  btn.click(getNewNumber);
 
+}
+
+function getNewNumber(){
+  console.log("click");
   $.ajax({
-    url: "http://www.boolean.careers/api/random/boolean/init",
+    url: "https://flynn.boolean.careers/exercises/api/random/int",
     method: "GET",
     success: function (data, stato) {
     //$("#risultati").html(data);
@@ -32,12 +39,14 @@ function ajaxRequest() {
     console.log('stato',stato);
     },
     error: function (richiesta, stato, errori) {
-    alert("E' avvenuto un errore. " + errore);
+    alert("E' avvenuto un errore. " + errori);
     }
   });
 
 
 
 
-
 }
+
+// function ajaxRequest() {
+// }
