@@ -34,9 +34,13 @@ function getNewNumber(){
     url: "https://flynn.boolean.careers/exercises/api/random/int",
     method: "GET",
     success: function (data, stato) {
-    //$("#risultati").html(data);
-    console.log('data',data);
-    console.log('stato',stato);
+      var success = data ['success'];
+      var value = data ['response'];
+      
+      var even = (value % 2 === 0);
+
+      console.log('next value ' + value);
+
     },
     error: function (richiesta, stato, errori) {
     alert("E' avvenuto un errore. " + errori);
