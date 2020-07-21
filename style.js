@@ -23,12 +23,13 @@ function init() {
 $(document).ready(init);
 
 function addNumber(){
-  var btn = $('#btn');
+  var btn = $('td');
   btn.click(getNewNumber);
 
 }
 
 function getNewNumber(){
+  var currentBtn = $(this);
   console.log("click");
   $.ajax({
     url: "https://flynn.boolean.careers/exercises/api/random/int",
@@ -36,8 +37,18 @@ function getNewNumber(){
     success: function (data, stato) {
       var success = data ['success'];
       var value = data ['response'];
-      
-      var even = (value % 2 === 0);
+
+      if (value <= 5) {
+        currentBtn.addClass('yellow');
+      } else {
+        currentBtn.addClass('green');
+      }
+
+      currentBtn.text(value);
+
+
+
+
 
       console.log('next value ' + value);
 
